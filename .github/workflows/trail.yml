@@ -26,4 +26,15 @@ jobs:
               run: pytest -v
               env:
                 PYTHONPATH: .
+    
+    deploy:
+        needs: test
+        runs-on: ubuntu-latest
+        if: github.ref == 'refs/heads/main'     
 
+        steps:
+            - name: Deploy
+              run: |
+                echo "Tests passed."
+                echo "Deploying Python app..."
+                echo "Deployment finished."
